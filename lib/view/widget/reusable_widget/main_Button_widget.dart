@@ -28,7 +28,7 @@ class MainButton extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
+              spreadRadius: .1,
               blurRadius: 6,
               offset: Offset(0, 3), // changes position of shadow
             ),
@@ -42,8 +42,8 @@ class MainButton extends StatelessWidget {
           //     Color(0xff3f0303),
           //   ],
           // ),
-          border: Border.all(color: borderColor,width: 1.5),
-          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: borderColor, width: 1.5),
+          borderRadius: BorderRadius.circular(9),
         ),
         child: Center(
           child: text,
