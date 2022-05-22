@@ -7,3 +7,4 @@ const Color DISABLED=Color(0xffB7B7B7);
 const Color PARAGRAPH=Color(0xff3A3A3A);
 const Color LIGHTGREY=Color(0xffEDEDED);
 const Color DISABLE2=Color(0xffEDEDED);
+const Color AUTHTEXTFORMFIELDCOLOR=Color(0xffD0D0D0);
