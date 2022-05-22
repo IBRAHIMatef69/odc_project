@@ -35,10 +35,10 @@ class AuthTextFromField extends StatelessWidget {
       decoration: InputDecoration(
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          label: Text(
-            hintText,
-            style: TextStyle(color: AUTHTEXTFORMFIELDCOLOR),
-          ),
+          // label: Text(
+          //   hintText,
+          //   style: TextStyle(color: AUTHTEXTFORMFIELDCOLOR),
+          // ),
           hintText: hintText,
           hintStyle: TextStyle(
             color: AUTHTEXTFORMFIELDCOLOR,
