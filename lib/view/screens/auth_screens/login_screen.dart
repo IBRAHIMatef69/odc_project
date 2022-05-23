@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:odc_project/logic/controller/auth_controller.dart';
+import 'package:odc_project/routes/routes.dart';
 import 'package:odc_project/utilites/my_strings.dart';
 import 'package:odc_project/utilites/themes.dart';
 import 'package:odc_project/view/widget/auth_widgets/auth_text_from_field.dart';
@@ -41,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: Get.height * .08,
+                    height: Get.height * .11,
                   ),
                   Image.asset(
                     "assets/orange_logo.png",
@@ -125,7 +126,7 @@ class LoginScreen extends StatelessWidget {
                                     Icons.visibility_outlined,
                                     size: 19,
                                   ),
-                            color: MAINCOLOR,
+                            color: DISABLED,
                           ));
                     },
                   ),
@@ -174,7 +175,24 @@ class LoginScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  SizedBox(height: Get.height * .03),
+                  SizedBox(height: Get.height * .035),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      KTextWidget(
+                          text: "Don’t Have an Account?  ",
+                          size: 14,
+                          color: BLACK,
+                          fontWeight: FontWeight.w500),
+                      InkWell(onTap: (){Get.toNamed(Routes.signUpScreen);},
+                        child: KTextWidget(
+                            text: "Sign Up ",
+                            size: 14,
+                            color: MAINCOLOR,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

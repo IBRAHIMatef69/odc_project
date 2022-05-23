@@ -7,6 +7,7 @@ import 'package:odc_project/view/widget/auth_widgets/auth_text_from_field.dart';
 import 'package:odc_project/view/widget/reusable_widget/main_Button_widget.dart';
 import 'package:odc_project/view/widget/reusable_widget/text_utils.dart';
 
+import '../../../routes/routes.dart';
 import '../../widget/auth_widgets/check_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -138,7 +139,7 @@ class SignUpScreen extends StatelessWidget {
                                     Icons.visibility_outlined,
                                     size: 19,
                                   ),
-                            color: MAINCOLOR,
+                            color: DISABLED,
                           ));
                     },
                   ),
@@ -232,7 +233,24 @@ class SignUpScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  SizedBox(height: Get.height * .03),
+                  SizedBox(height: Get.height * .02),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      KTextWidget(
+                          text: "Already Have an Account? ?  ",
+                          size: 14,
+                          color: BLACK,
+                          fontWeight: FontWeight.w500),
+                      InkWell(onTap: (){Get.toNamed(Routes.loginScreen);},
+                        child: KTextWidget(
+                            text: "Login",
+                            size: 15,
+                            color: MAINCOLOR,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

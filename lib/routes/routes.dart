@@ -26,13 +26,13 @@ class Routes {
       name: loginScreen,
       page: () => LoginScreen(),
       transition: Transition.downToUp,
-      transitionDuration: Duration(milliseconds: 1000),binding: AuthBinding()
+   transitionDuration: Duration(milliseconds: 700),binding: AuthBinding()
     ),
     GetPage(
         name: signUpScreen,
         page: () => SignUpScreen(),
         transition: Transition.downToUp,
-        transitionDuration: Duration(milliseconds: 1000),
+      transitionDuration: Duration(milliseconds: 700),
         bindings: [
           AuthBinding(),
         ]),
