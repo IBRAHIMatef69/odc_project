@@ -93,7 +93,8 @@ class LoginScreen extends StatelessWidget {
                       },
                       hintText: "E-mail",
                       textInputType: TextInputType.emailAddress,
-                      prefixIcon: Image.asset("assets/icons/envelope 1.png"),
+                      prefixIcon: null,
+                      //Image.asset("assets/icons/envelope 1.png"),
                       suffixIcon: SizedBox()),
                   SizedBox(height: Get.height * .035),
 
@@ -115,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                           },
                           hintText: "Password",
                           textInputType: TextInputType.name,
-                          prefixIcon: Image.asset("assets/icons/lock 1.png"),
+                          prefixIcon: null,
                           suffixIcon: IconButton(
                             onPressed: () {
                               authController.visibility();
@@ -154,7 +155,11 @@ class LoginScreen extends StatelessWidget {
                         alignment: Alignment.center,
                         child: MainButton(
                             onPressed: () async {
-                              if (formKey.currentState!.validate()) {}
+                              if (formKey.currentState!.validate()) {
+                                authController.loginMethod(
+                                    _emailController.text.trim(),
+                                    _passwordController.text);
+                              }
                             },
                             text: authController.isLoading
                                 ? SizedBox(
@@ -184,7 +189,10 @@ class LoginScreen extends StatelessWidget {
                           size: 14,
                           color: BLACK,
                           fontWeight: FontWeight.w500),
-                      InkWell(onTap: (){Get.toNamed(Routes.signUpScreen);},
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.signUpScreen);
+                        },
                         child: KTextWidget(
                             text: "Sign Up ",
                             size: 14,
