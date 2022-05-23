@@ -48,7 +48,7 @@ class AuthController extends GetxController {
         authBox.write(accessTokenKEY, registerResponseModel!.data!.accessToken);
         authBox.write(
             refreshTokenKEY, registerResponseModel!.data!.refreshToken);
-        Get.toNamed(Routes.homeScreen);
+        Get.toNamed(Routes.mainScreen);
         Get.snackbar(
           "success",
           "${registerResponseModel!.message}",
@@ -90,7 +90,7 @@ class AuthController extends GetxController {
         authBox.write(accessTokenKEY, loginResponseModel!.data!.accessToken);
         authBox.write(
             refreshTokenKEY, loginResponseModel!.data!.refreshToken);
-        Get.toNamed(Routes.homeScreen);
+        Get.toNamed(Routes.mainScreen);
         Get.snackbar(
           "success",
           "${loginResponseModel!.message}",

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:odc_project/routes/routes.dart';
 import 'package:spring/spring.dart';
+
+import '../../../utilites/my_strings.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,11 +14,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  GetStorage savedData = GetStorage();
+
   @override
   void initState() {
     // TODO: implement initState
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offNamed(Routes.onBoardingScreen);
+      savedData.read(accessTokenKEY) == ""
+          ? Get.offNamed(Routes.onBoardingScreen)
+          : Get.offNamed(Routes.mainScreen);
     });
     super.initState();
   }

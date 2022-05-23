@@ -39,6 +39,7 @@ dependencies:
   get_storage:
   smooth_page_indicator:
   http:
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/bottom_nav_icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
