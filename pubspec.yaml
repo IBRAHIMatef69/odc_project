@@ -38,6 +38,7 @@ dependencies:
   get: 4.6.1
   get_storage:
   smooth_page_indicator:
+  http:
 
 dev_dependencies:
   flutter_test:
