@@ -8,7 +8,7 @@ class AuthTextFromField extends StatelessWidget {
   final Function validator;
   final TextInputType textInputType;
     Widget? prefixIcon;
-  final Widget suffixIcon;
+    Widget? suffixIcon;
 
   AuthTextFromField({
     Key? key,
