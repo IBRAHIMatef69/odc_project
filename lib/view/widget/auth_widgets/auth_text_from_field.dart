@@ -29,7 +29,7 @@ class AuthTextFromField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       cursorColor: AUTHTEXTFORMFIELDCOLOR,
-      style: TextStyle(color: AUTHTEXTFORMFIELDCOLOR),
+      style: TextStyle(color: PARAGRAPH.withOpacity(.6)),
       keyboardType: textInputType,
       validator: (value) => validator(value),
       decoration: InputDecoration(
@@ -48,7 +48,7 @@ class AuthTextFromField extends StatelessWidget {
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.white,
+              color: Colors.transparent,
             ),
             borderRadius: BorderRadius.circular(10),
           ),
