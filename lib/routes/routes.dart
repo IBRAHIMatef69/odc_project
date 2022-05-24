@@ -4,6 +4,7 @@ import 'package:odc_project/logic/bindings/main_binding.dart';
 import 'package:odc_project/logic/bindings/onBoarding_binding.dart';
 import 'package:odc_project/view/screens/auth_screens/login_screen.dart';
 import 'package:odc_project/view/screens/auth_screens/sign_up_screen.dart';
+import 'package:odc_project/view/screens/categories_screen.dart';
 import 'package:odc_project/view/screens/home_screen.dart';
 import 'package:odc_project/view/screens/main_screen.dart';
 import 'package:odc_project/view/screens/splash_and_onBoarding/on_boarding_screen.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const loginScreen = "/loginScreen";
   static const homeScreen = "/homeScreen";
   static const mainScreen = "/mainScreen";
+  static const categoriesScreen = "/categoriesScreen";
   static final routes = [
     GetPage(
       name: splashScreen,
@@ -45,6 +47,10 @@ class Routes {
     GetPage(
       name: homeScreen,
       page: () => HomeScreen(),
+    ),
+    GetPage(
+      name: categoriesScreen,
+      page: () => CategoriesScreen(),
     ),
   ];
 }

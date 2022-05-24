@@ -10,14 +10,14 @@ class EnterCodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height * .26,
-      width: Get.width,
+      height: Get.height * .245,
+      width: Get.width * 96,
       child: Stack(
         children: [
           Positioned(
               bottom: 0,
               child: SizedBox(
-                width: Get.width,
+                width: Get.width* .95,
                 height: 50,
                 child: Card(
                   color: MAINCOLOR,
@@ -26,8 +26,8 @@ class EnterCodeWidget extends StatelessWidget {
           Positioned(
               bottom: 5,
               child: SizedBox(
-                height: Get.height * .259,
-                width: Get.width,
+                height: Get.height * .241,
+                width: Get.width * .95,
                 child: Card(
                   color: BLACK,
                   child: Column(
@@ -45,15 +45,15 @@ class EnterCodeWidget extends StatelessWidget {
                             fontWeight: FontWeight.w600),
                       ),
                       SizedBox(
-                        height: Get.height * .03,
+                        height: Get.height * .045,
                       ),
                       Row(
                         children: [
                           Container(
                             padding: EdgeInsets.only(left: 5),
                             margin: EdgeInsets.only(left: Get.width * .05),
-                            width: Get.width * .67,
-                            height: Get.height * .07,
+                            width: Get.width * .63,
+                            height: Get.height * .065,
                             decoration: BoxDecoration(
                                 color: Color(0xff2B2B2B),
                                 borderRadius: BorderRadius.circular(10)),
@@ -66,22 +66,20 @@ class EnterCodeWidget extends StatelessWidget {
                                 hintText: "Enter code",
                                 textInputType: TextInputType.text,
                                 suffixIcon: null),
-                          ),        RawMaterialButton(
-                            onPressed: () {
-
-                            },
+                          ),
+                          RawMaterialButton(
+                            onPressed: () {},
                             child: Icon(
-                               Icons.arrow_forward_rounded,
+                              Icons.arrow_forward_rounded,
                               color: WHITE,
-                              size: 20.0,
+                              size: Get.width * .06,
                             ),
                             // Icon
                             shape: const CircleBorder(),
                             elevation: 2.0,
-                            fillColor:  MAINCOLOR,
+                            fillColor: MAINCOLOR,
                             padding: const EdgeInsets.all(12.0),
                           ),
-
                         ],
                       )
                     ],

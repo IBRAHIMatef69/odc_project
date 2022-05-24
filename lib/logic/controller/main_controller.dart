@@ -13,4 +13,6 @@ class MainController extends GetxController {
 
     update();
   }
+
+
 }
