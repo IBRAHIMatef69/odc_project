@@ -6,6 +6,7 @@ import 'package:odc_project/model/register_response_model.dart';
 import 'package:odc_project/utilites/my_strings.dart';
 
 class PostMethods {
+  ///register
   Future<RegisterResponseModel> registerPostMethod({
     required Map<String, dynamic> data,
   }) async {
@@ -16,6 +17,7 @@ class PostMethods {
     return responseModel;
   }
 
+  ///login
   Future<LoginResponseModel> loginPostMethod({
     required Map<String, dynamic> data,
   }) async {
@@ -25,10 +27,10 @@ class PostMethods {
     return responseModel;
   }
 
+  ///getNewToken
   Future<AccessTokenModel> getNewToken(String refreshToken) async {
-
     var response = await http.post(Uri.parse(baseUrl + 'refreshToken'),
-        headers: {"Authorization":'Bearer '+ refreshToken},body: '');
+        headers: {"Authorization": 'Bearer ' + refreshToken}, body: '');
 
     var respnseBody = jsonDecode(response.body);
     AccessTokenModel accessTokenModel = AccessTokenModel.fromJson(respnseBody);
