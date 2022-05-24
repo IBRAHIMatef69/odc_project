@@ -23,10 +23,10 @@ class HomeController extends GetxController {
   }
 
   Future getCategories() async {
-    String refreshToken = savedData.read(refreshTokenKEY);
+    String accessToken = savedData.read(accessTokenKEY);
     isCategoryLoading = true;
     update();
-    await GetMethods().getCategoriesMethod(refreshToken).then((value) {
+    await GetMethods().getCategoriesMethod(accessToken).then((value) {
       if (value.success == true) {
         categoriesList = value.data!;
         isCategoryLoading = false;
@@ -46,6 +46,7 @@ class HomeController extends GetxController {
 
           savedData.write(accessTokenKEY, value.data!.accessToken);
           savedData.write(refreshTokenKEY, value.data!.refreshToken);
+          getCategories();
         } else if (value.success == false) {
           Get.snackbar(
             "failure",
@@ -64,9 +65,9 @@ class HomeController extends GetxController {
 
   Future getCoursesData() async {
     isCoursesLoading = true;
-    String refreshToken = savedData.read(refreshTokenKEY);
+    String accessToken = savedData.read(accessTokenKEY);
     update();
-    await GetMethods().getAllCoursesMethod(refreshToken).then((value) {
+    await GetMethods().getAllCoursesMethod(accessToken).then((value) {
       if (value.success == true) {
         coursesList=value.data!;
         isCoursesLoading=false;
@@ -75,14 +76,13 @@ class HomeController extends GetxController {
           snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
       isCategoryLoading = false;
       update();}
-    }).catchError((onError) async {
-      String refreshToken = savedData.read(refreshTokenKEY);
-      await PostMethods().getNewToken(refreshToken).then((value) {
+    }).catchError((onError) async { String refreshToken = savedData.read(refreshTokenKEY);
+       await PostMethods().getNewToken(refreshToken).then((value) {
         if (value.success == true) {
           print(refreshToken);
 
           savedData.write(accessTokenKEY, value.data!.accessToken);
-          savedData.write(refreshTokenKEY, value.data!.refreshToken);
+          savedData.write(refreshTokenKEY, value.data!.refreshToken);getCoursesData();
         } else if (value.success == false) {
           Get.snackbar(
             "failure",

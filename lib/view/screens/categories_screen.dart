@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:odc_project/model/categories_model.dart';
 import 'package:odc_project/utilites/themes.dart';
 import 'package:odc_project/view/widget/reusable_widget/category_widget.dart';
-import 'package:odc_project/view/widget/reusable_widget/text_utils.dart';
+import 'package:odc_project/view/widget/reusable_widget/costum_app_bar.dart';
 
 class CategoriesScreen extends StatelessWidget {
   List<CategoriesData> categoriesList = Get.arguments[0];
@@ -12,16 +12,7 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: WHITE,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: WHITE,
-        elevation: 0,
-        title: KTextWidget(
-            text: "Categories",
-            size: 19,
-            color: BLACK,
-            fontWeight: FontWeight.w600),
-      ),
+      appBar: customAppBar("Categories",true),
       body: categoriesList.isEmpty
           ? Center(
               child: CircularProgressIndicator(),

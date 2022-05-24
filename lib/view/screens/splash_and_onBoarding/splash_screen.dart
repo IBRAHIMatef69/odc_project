@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     Future.delayed(const Duration(seconds: 3), () {
-      savedData.read(accessTokenKEY) == ""
+      savedData.read(accessTokenKEY) == null
           ? Get.offNamed(Routes.onBoardingScreen)
           : Get.offNamed(Routes.mainScreen);
     });

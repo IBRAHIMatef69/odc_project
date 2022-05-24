@@ -10,6 +10,7 @@ class AuthTextFromField extends StatelessWidget {
     Widget? prefixIcon;
     Widget? suffixIcon;
 
+
   AuthTextFromField({
     Key? key,
     required this.controller,
@@ -23,8 +24,7 @@ class AuthTextFromField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+
     return TextFormField(
       controller: controller,
       obscureText: obscureText,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:odc_project/logic/controller/home_controller.dart';
+import 'package:odc_project/model/courses_model.dart';
+import 'package:odc_project/routes/routes.dart';
 import 'package:odc_project/utilites/themes.dart';
 import 'package:odc_project/view/widget/reusable_widget/text_utils.dart';
 
@@ -48,11 +50,8 @@ class NewCoursesWidget extends StatelessWidget {
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return courseItemWidget(
-                              homeController.coursesList[index].courseName!,
-                              homeController
-                                  .coursesList[index].category!.categoryName!,
-                              homeController.coursesList[index].courseLevel!,
-                            );
+
+                                homeController.coursesList[index]);
                           },
                           separatorBuilder: (context, index) {
                             return SizedBox(
@@ -69,55 +68,59 @@ class NewCoursesWidget extends StatelessWidget {
   }
 
   Widget courseItemWidget(
-    String courseName,
-    String categoryName,
-    String courseLevel,
+
+    CourseData courseData,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: Get.width * .65,
-          height: Get.height * .19,
-          child: Card(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                "assets/courseImage.png",
-                width: Get.width * .5,
-                height: Get.height * .2,
-                fit: BoxFit.cover,
+    return InkWell(
+      onTap: () {
+        Get.toNamed(Routes.courseScreen,arguments: [courseData]);
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: Get.width * .65,
+            height: Get.height * .19,
+            child: Card(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  "assets/courseImage.png",
+                  width: Get.width * .5,
+                  height: Get.height * .2,
+                  fit: BoxFit.cover,
+                ),
               ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        KTextWidget(
-            text: categoryName,
-            size: Get.width * .03,
-            color: MAINCOLOR,
-            fontWeight: FontWeight.w400),
-        SizedBox(
-          height: 5,
-        ),
-        KTextWidget(
-            text: "Learn " + courseName,
-            size: Get.width * .05,
-            color: BLACK,
-            fontWeight: FontWeight.w700),
-        SizedBox(
-          height: 5,
-        ),
-        KTextWidget(
-            text: "level: " + courseLevel,
-            size: Get.width * .04,
-            color: PARAGRAPH,
-            fontWeight: FontWeight.w500),
-      ],
+          SizedBox(
+            height: 8,
+          ),
+          KTextWidget(
+              text: courseData.category!.categoryName!,
+              size: Get.width * .03,
+              color: MAINCOLOR,
+              fontWeight: FontWeight.w400),
+          SizedBox(
+            height: 5,
+          ),
+          KTextWidget(
+              text: "Learn " + courseData.courseName!,
+              size: Get.width * .05,
+              color: BLACK,
+              fontWeight: FontWeight.w700),
+          SizedBox(
+            height: 5,
+          ),
+          KTextWidget(
+              text: "level: " + courseData.courseLevel!,
+              size: Get.width * .04,
+              color: PARAGRAPH,
+              fontWeight: FontWeight.w500),
+        ],
+      ),
     );
   }
 }

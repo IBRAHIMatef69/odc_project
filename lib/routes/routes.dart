@@ -5,10 +5,13 @@ import 'package:odc_project/logic/bindings/onBoarding_binding.dart';
 import 'package:odc_project/view/screens/auth_screens/login_screen.dart';
 import 'package:odc_project/view/screens/auth_screens/sign_up_screen.dart';
 import 'package:odc_project/view/screens/categories_screen.dart';
+import 'package:odc_project/view/screens/course_details_screen.dart';
 import 'package:odc_project/view/screens/home_screen.dart';
 import 'package:odc_project/view/screens/main_screen.dart';
 import 'package:odc_project/view/screens/splash_and_onBoarding/on_boarding_screen.dart';
 import 'package:odc_project/view/screens/splash_and_onBoarding/splash_screen.dart';
+
+import '../view/screens/profile_screen.dart';
 
 class Routes {
   static const splashScreen = "/splashScreen";
@@ -16,8 +19,10 @@ class Routes {
   static const signUpScreen = "/signUpScreen";
   static const loginScreen = "/loginScreen";
   static const homeScreen = "/homeScreen";
+  static const profileScreen = "/profileScreen";
   static const mainScreen = "/mainScreen";
   static const categoriesScreen = "/categoriesScreen";
+  static const courseScreen = "/courseScreen";
   static final routes = [
     GetPage(
       name: splashScreen,
@@ -30,27 +35,43 @@ class Routes {
     GetPage(
         name: loginScreen,
         page: () => LoginScreen(),
-        transition: Transition.downToUp,
+        transition: Transition.rightToLeft,
         transitionDuration: Duration(milliseconds: 700),
         binding: AuthBinding()),
     GetPage(
         name: signUpScreen,
         page: () => SignUpScreen(),
-        transition: Transition.downToUp,
+        transition: Transition.rightToLeft,
         transitionDuration: Duration(milliseconds: 700),
         bindings: [
           AuthBinding(),
         ]),
-    GetPage(name: mainScreen, page: () => MainScreen(), bindings: [
-      MainBinding(),
-    ]),
+    GetPage(
+      name: mainScreen,
+      page: () => MainScreen(),
+      bindings: [
+        MainBinding(),AuthBinding()
+      ],
+    ),
     GetPage(
       name: homeScreen,
       page: () => HomeScreen(),
+      transition: Transition.rightToLeft,
+    ),    GetPage(
+      name: profileScreen,
+      page: () => ProfileScreen(),
+      transition: Transition.rightToLeft,binding:AuthBinding()
     ),
     GetPage(
       name: categoriesScreen,
+      transition: Transition.rightToLeft,
       page: () => CategoriesScreen(),
+    ),
+    GetPage(
+      name: courseScreen,
+      transition: Transition.rightToLeft,
+      page: () => CourseDetailsScreen(),
+      binding: MainBinding()
     ),
   ];
 }

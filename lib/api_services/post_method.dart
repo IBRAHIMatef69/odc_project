@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:odc_project/model/acces_token_model.dart';
+import 'package:odc_project/model/exam_model.dart';
 import 'package:odc_project/model/login_respose_model.dart';
 import 'package:odc_project/model/register_response_model.dart';
 import 'package:odc_project/utilites/my_strings.dart';
@@ -32,8 +33,21 @@ class PostMethods {
     var response = await http.post(Uri.parse(baseUrl + 'refreshToken'),
         headers: {"Authorization": 'Bearer ' + refreshToken}, body: '');
 
-    var respnseBody = jsonDecode(response.body);
-    AccessTokenModel accessTokenModel = AccessTokenModel.fromJson(respnseBody);
+    var responseBody = jsonDecode(response.body);
+    AccessTokenModel accessTokenModel = AccessTokenModel.fromJson(responseBody);
     return accessTokenModel;
   }
+
+  ///enroll course
+  Future enrollCourseMethod(int courseId, String accessToken) async {
+    var response = await http.post(
+      Uri.parse(baseUrl + 'courses/$courseId/enroll'),
+      headers: {"Authorization": 'Bearer ' + accessToken},
+    );
+
+    var responseBody = jsonDecode(response.body);
+    return responseBody;
+  }
+
+
 }

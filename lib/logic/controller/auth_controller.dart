@@ -48,6 +48,7 @@ class AuthController extends GetxController {
         authBox.write(accessTokenKEY, registerResponseModel!.data!.accessToken);
         authBox.write(
             refreshTokenKEY, registerResponseModel!.data!.refreshToken);
+        authBox.write(KtokenCreatedAt, DateTime.now().toString());
         Get.toNamed(Routes.mainScreen);
         Get.snackbar(
           "success",
@@ -88,8 +89,8 @@ class AuthController extends GetxController {
       loginResponseModel = value;
       if (loginResponseModel!.success == true && loginResponseModel != null) {
         authBox.write(accessTokenKEY, loginResponseModel!.data!.accessToken);
-        authBox.write(
-            refreshTokenKEY, loginResponseModel!.data!.refreshToken);
+        authBox.write(refreshTokenKEY, loginResponseModel!.data!.refreshToken);
+        authBox.write(KtokenCreatedAt, DateTime.now().toString());
         Get.toNamed(Routes.mainScreen);
         Get.snackbar(
           "success",
@@ -98,7 +99,7 @@ class AuthController extends GetxController {
         );
         isLoading = false;
         update();
-      }else if (loginResponseModel!.success == false) {
+      } else if (loginResponseModel!.success == false) {
         Get.defaultDialog(
             title: "",
             middleText: '${loginResponseModel!.message}',
@@ -114,6 +115,12 @@ class AuthController extends GetxController {
       Get.snackbar("Error", "$onError",
           snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
     });
+    update();
+  }
+
+  logout() async {
+    authBox.erase();
+    Get.toNamed(Routes.loginScreen);
     update();
   }
 }
