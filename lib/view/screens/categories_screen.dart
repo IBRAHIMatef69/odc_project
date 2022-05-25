@@ -11,7 +11,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: WHITE,
+
       appBar: customAppBar("Categories",true),
       body: categoriesList.isEmpty
           ? Center(

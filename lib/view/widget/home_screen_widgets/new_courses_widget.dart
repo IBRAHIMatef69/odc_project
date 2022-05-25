@@ -13,7 +13,7 @@ class NewCoursesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (_) {
-        return homeController.isCoursesLoading
+        return homeController.isCoursesLoading==true
             ? CircularProgressIndicator(
                 color: MAINCOLOR,
               )
@@ -73,7 +73,7 @@ class NewCoursesWidget extends StatelessWidget {
   ) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.courseScreen,arguments: [courseData]);
+        Get.toNamed(Routes.courseDetailsScreen,arguments: [courseData]);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

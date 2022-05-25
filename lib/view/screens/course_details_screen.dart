@@ -201,11 +201,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                                                             .text
                                                                             .isEmpty) {
                                                                           return "pls Enter The code";
-                                                                        } else if (courseController.gettingExamValidation !=
-                                                                            "") {
-                                                                          return courseController
-                                                                              .gettingExamValidation;
-                                                                        } else {
+                                                                        }  else {
                                                                           return null;
                                                                         }
                                                                       },
@@ -224,6 +220,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                                             MainButton(
                                                                 onPressed:
                                                                     () async {
+
                                                                   if (codeFormKey
                                                                       .currentState!
                                                                       .validate()) {

@@ -9,6 +9,7 @@ class AuthTextFromField extends StatelessWidget {
   final TextInputType textInputType;
     Widget? prefixIcon;
     Widget? suffixIcon;
+    Color? inputColor;
 
 
   AuthTextFromField({
@@ -18,7 +19,7 @@ class AuthTextFromField extends StatelessWidget {
     required this.validator,
     required this.hintText,
     required this.textInputType,
-      this.prefixIcon,
+      this.prefixIcon,this.inputColor,
     required this.suffixIcon,
   }) : super(key: key);
 
@@ -29,7 +30,7 @@ class AuthTextFromField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       cursorColor: AUTHTEXTFORMFIELDCOLOR,
-      style: TextStyle(color: PARAGRAPH.withOpacity(.6)),
+      style: TextStyle(color:inputColor?? PARAGRAPH.withOpacity(.6)),
       keyboardType: textInputType,
       validator: (value) => validator(value),
       decoration: InputDecoration(
@@ -41,7 +42,7 @@ class AuthTextFromField extends StatelessWidget {
           // ),
           hintText: hintText,
           hintStyle: TextStyle(
-            color: DISABLED,
+            color:inputColor?? DISABLED,
             fontSize: 13,
             fontWeight: FontWeight.w400,
           ),

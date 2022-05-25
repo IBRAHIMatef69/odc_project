@@ -40,6 +40,8 @@ dependencies:
   smooth_page_indicator:
   http:
   flutter_svg:
+  timer_count_down:
+  group_radio_button: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/bottom_nav_icons/
+    - assets/exam/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

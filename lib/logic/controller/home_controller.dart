@@ -23,6 +23,8 @@ class HomeController extends GetxController {
   }
 
   Future getCategories() async {
+    categoriesList.clear()
+    ;
     String accessToken = savedData.read(accessTokenKEY);
     isCategoryLoading = true;
     update();
@@ -65,6 +67,7 @@ class HomeController extends GetxController {
 
   Future getCoursesData() async {
     isCoursesLoading = true;
+    coursesList.clear();
     String accessToken = savedData.read(accessTokenKEY);
     update();
     await GetMethods().getAllCoursesMethod(accessToken).then((value) {

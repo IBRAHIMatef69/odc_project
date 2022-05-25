@@ -6,7 +6,7 @@ import 'package:odc_project/view/widget/reusable_widget/text_utils.dart';
 
 PreferredSizeWidget customAppBar(String title, bool needLeading) => AppBar(
       centerTitle: true,
-      backgroundColor: WHITE,
+      backgroundColor: Colors.transparent,
       leading: needLeading
           ? IconButton(
               onPressed: () {
