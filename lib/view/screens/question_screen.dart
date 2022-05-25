@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:odc_project/logic/controller/question_controller.dart';
 import 'package:odc_project/model/exam_model.dart';
+import 'package:odc_project/routes/routes.dart';
 import 'package:odc_project/utilites/themes.dart';
 import 'package:odc_project/view/widget/reusable_widget/costum_app_bar.dart';
 import 'package:odc_project/view/widget/reusable_widget/main_Button_widget.dart';
@@ -87,7 +88,7 @@ class QuestionScreen extends StatelessWidget {
                         ],
                       );
                     },
-                    onFinished: () {},
+                    onFinished: () {Get.offNamed(Routes.courseExamScreen);},
                   )
                 ],
               ),
@@ -137,22 +138,24 @@ class QuestionScreen extends StatelessWidget {
                           borderColor: MAINCOLOR),
                   MainButton(
                       onPressed: () {
-                        if (questionController.currentIndex == 9) {
-                          print("object");
-                        }
-                        if (questionController.groupValue != "") {
-                          questionController
-                              .addAnswer(questionController.groupValue);
-                          questionController.changeGroupValue("");
-                          if (questionController.currentIndex != 9) {
-                            pageController.jumpToPage(
-                                questionController.currentIndex + 1);
+                        if (questionController.currentIndex == 9) {Get.offNamed(Routes.courseExamScreen);
+
+                        }else{
+                          if (questionController.groupValue != "") {
+                            questionController
+                                .addAnswer(questionController.groupValue);
+                            questionController.changeGroupValue("");
+                            if (questionController.currentIndex != 9) {
+                              pageController.jumpToPage(
+                                  questionController.currentIndex + 1);
+                            }
+                          } else {
+                            Get.snackbar("choose answer", "Please choose answer",
+                                snackPosition: SnackPosition.TOP,
+                                backgroundColor: MAINCOLOR);
                           }
-                        } else {
-                          Get.snackbar("choose answer", "Please choose answer",
-                              snackPosition: SnackPosition.TOP,
-                              backgroundColor: MAINCOLOR);
                         }
+
                       },
                       text: Text(
                         questionController.currentIndex == 9
