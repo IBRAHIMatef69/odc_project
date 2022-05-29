@@ -69,7 +69,7 @@ class AuthController extends GetxController {
         isLoading = false;
         update();
       }
-    }).catchError((onError) {
+    }).catchError((onError) {        isLoading = false;
       Get.snackbar("Error", "$onError",
           snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
     });
@@ -111,7 +111,7 @@ class AuthController extends GetxController {
         isLoading = false;
         update();
       }
-    }).catchError((onError) {
+    }).catchError((onError) {        isLoading = false;
       Get.snackbar("Error", "$onError",
           snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
     });
