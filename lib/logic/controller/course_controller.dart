@@ -13,6 +13,7 @@ class CourseController extends GetxController {
   bool isGettingExam = false;
   List<ExamDataModel>? examQuestionList;
   bool isSuccess = false;
+  bool isExamTaken = false;
   int pageViewIndex = 0;
 
   void onPageChanged(index) {

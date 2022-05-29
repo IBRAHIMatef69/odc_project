@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:odc_project/logic/controller/question_controller.dart';
@@ -88,7 +89,9 @@ class QuestionScreen extends StatelessWidget {
                         ],
                       );
                     },
-                    onFinished: () {Get.offNamed(Routes.courseExamScreen);},
+                    onFinished: () {
+                      Get.offNamed(Routes.courseExamScreen);
+                    },
                   )
                 ],
               ),
@@ -96,18 +99,16 @@ class QuestionScreen extends StatelessWidget {
                 height: Get.height * .065,
               ),
               Container(
-                height: Get.height * .3,
+                height: Get.height * .5,
                 width: Get.width,
                 child: PageView.builder(
-                  //     physics: const NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
                   onPageChanged: (index) {
                     questionController.changeCurrentIndex(index);
                   },
                   itemBuilder: (context, index) {
-                    return questionList(
-                      examQuestionList[index],
-                    );
+                    return questionList(examQuestionList[index], index);
                   },
                   itemCount: examQuestionList.length,
                 ),
@@ -138,24 +139,23 @@ class QuestionScreen extends StatelessWidget {
                           borderColor: MAINCOLOR),
                   MainButton(
                       onPressed: () {
-                        if (questionController.currentIndex == 9) {Get.offNamed(Routes.courseExamScreen);
-
-                        }else{
-                          if (questionController.groupValue != "") {
-                            questionController
-                                .addAnswer(questionController.groupValue);
-                            questionController.changeGroupValue("");
+                        if (questionController.currentIndex == 9) {
+                          Get.offNamed(Routes.waitForHrScreen);
+                        } else {
+                          if (questionController.answersList
+                              .elementAt(questionController.currentIndex)
+                              .isNotEmpty) {
                             if (questionController.currentIndex != 9) {
                               pageController.jumpToPage(
                                   questionController.currentIndex + 1);
                             }
                           } else {
-                            Get.snackbar("choose answer", "Please choose answer",
+                            Get.snackbar(
+                                "choose answer", "Please choose answer",
                                 snackPosition: SnackPosition.TOP,
                                 backgroundColor: MAINCOLOR);
                           }
                         }
-
                       },
                       text: Text(
                         questionController.currentIndex == 9
@@ -175,9 +175,7 @@ class QuestionScreen extends StatelessWidget {
     );
   }
 
-  Widget questionList(
-    ExamDataModel examDataModel,
-  ) {
+  Widget questionList(ExamDataModel examDataModel, int index) {
     return GetBuilder<QuestionController>(
       builder: (_) {
         return SizedBox(
@@ -191,28 +189,167 @@ class QuestionScreen extends StatelessWidget {
               SizedBox(
                 height: Get.height * .03,
               ),
-              RadioGroup<String>.builder(
-                activeColor: MAINCOLOR,
-                direction: Axis.vertical,
-                groupValue: questionController.groupValue,
-                horizontalAlignment: MainAxisAlignment.spaceBetween,
-                onChanged: (answer) {
-                  questionController.changeGroupValue(answer);
-                },
-                items: [
-                  examDataModel.answer1!,
-                  examDataModel.answer2!,
-                  examDataModel.answer3!,
-                  examDataModel.answer4!,
-                ],
-                textStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: Get.width * .033,
+              Expanded(
+                child: Container(
+                  child: ListView(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: MAINCOLOR, width: 1.5),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "  ${examDataModel.answer1}",
+                                style: TextStyle(
+                                    color: BLACK, fontWeight: FontWeight.w600),
+                                maxLines: 2,
+                              ),
+                            ),
+                            Radio(
+                                value: examDataModel.answer1.toString(),
+                                groupValue:
+                                    questionController.answersList[index],
+                                onChanged: (answer) {
+                                  print(questionController.answersList.length);
+                                  questionController.changeGroupValue(answer);
+                                  questionController.updateAnswer(
+                                      index, answer.toString());
+                                })
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: MAINCOLOR, width: 1.5),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "  ${examDataModel.answer2}",
+                                style: TextStyle(
+                                    color: BLACK, fontWeight: FontWeight.w600),
+                                maxLines: 2,
+                              ),
+                            ),
+                            Radio(
+                                value: examDataModel.answer2.toString(),
+                                groupValue:
+                                    questionController.answersList[index],
+                                onChanged: (answer) {
+                                  print(questionController.answersList.length);
+                                  questionController.changeGroupValue(answer);
+                                  questionController.updateAnswer(
+                                      index, answer.toString());
+                                })
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: MAINCOLOR, width: 1.5),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "  ${examDataModel.answer3}",
+                                style: TextStyle(
+                                    color: BLACK, fontWeight: FontWeight.w600),
+                                maxLines: 2,
+                              ),
+                            ),
+                            Radio(
+                                value: examDataModel.answer3.toString(),
+                                groupValue:
+                                    questionController.answersList[index],
+                                onChanged: (answer) {
+                                  print(questionController.answersList.length);
+                                  questionController.changeGroupValue(answer);
+                                  questionController.updateAnswer(
+                                      index, answer.toString());
+                                })
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: MAINCOLOR, width: 1.5),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "  ${examDataModel.answer4}",
+                                style: TextStyle(
+                                    color: BLACK, fontWeight: FontWeight.w600),
+                                maxLines: 2,
+                              ),
+                            ),
+                            Radio(
+                                value: examDataModel.answer4.toString(),
+                                groupValue:
+                                    questionController.answersList[index],
+                                onChanged: (answer) {
+                                  print(questionController.answersList.length);
+                                  questionController.changeGroupValue(answer);
+                                  questionController.updateAnswer(
+                                      index, answer.toString());
+                                })
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                itemBuilder: (item) => RadioButtonBuilder(
-                  item,
-                ),
-              ),
+              )
+              // RadioGroup<String>.builder(
+              //   activeColor: MAINCOLOR,
+              //   direction: Axis.vertical,
+              //   groupValue: questionController.answersList[index],
+              //   horizontalAlignment: MainAxisAlignment.spaceBetween,
+              //   onChanged: (answer) {
+              //     print(questionController.answersList.length);
+              //     questionController.changeGroupValue(answer);
+              //     questionController.updateAnswer(index, answer!);
+              //   },
+              //   items: [
+              //     examDataModel.answer1!,
+              //     examDataModel.answer2!,
+              //     examDataModel.answer3!,
+              //     examDataModel.answer4!,
+              //   ],
+              //   textStyle: TextStyle(
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: Get.width * .033,
+              //   ),
+              //   itemBuilder: (item) => RadioButtonBuilder(
+              //     item,
+              //   ),
+              // ),
             ],
           ),
         );

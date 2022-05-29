@@ -6,7 +6,8 @@ class QuestionController extends GetxController {
       new CountdownController(autoStart: true);
   String groupValue = "";
   int currentIndex = 0;
-  List<String> answersList = [];
+  bool isLoading = false;
+  List<String> answersList = ["", "", "", "", "", "", "", "", "", ""];
 
   @override
   void onInit() {
@@ -21,19 +22,12 @@ class QuestionController extends GetxController {
     super.dispose();
   }
 
-  addAnswer(String answer) {
-    answersList.add(answer);
-
+  updateAnswer(int index, String answer) {
+    answersList.replaceRange(index, index+1, [answer]);
     update();
-  }
-  updateAnswer(int index,String answer){
-    answersList[index]=answer;
-    update();
-
   }
 
   changeCurrentIndex(int index) {
-
     currentIndex = index;
     update();
   }
@@ -62,4 +56,6 @@ class QuestionController extends GetxController {
       return "0:0";
     }
   }
+
+  submitExam()async{}
 }

@@ -10,7 +10,7 @@ import 'package:odc_project/view/widget/reusable_widget/text_utils.dart';
 
 import '../../model/exam_model.dart';
 
-class CourseExamScreen extends StatelessWidget {
+class StartExamScreen extends StatelessWidget {
   final courseController = Get.find<CourseController>();
   PageController pageController = PageController();
   List<ExamDataModel> examQuestionList = Get.arguments[0];
@@ -60,41 +60,18 @@ class CourseExamScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: Get.height * .05,
+                    height: Get.height * .06,
                   ),
                   Expanded(
                     child: Container(
                       height: Get.height * 6,
-                      child: PageView(
-                        //physics: const NeverScrollableScrollPhysics(),
-                        onPageChanged: (page) {
-                          courseController.onPageChanged(page);
-                          print(page);
-                        },
-                        children: [
-                          buildPageViewItem(
+                      child:                           buildPageViewItem(
                               () => null,
-                              "assets/exam/illustration (1).png",
-                              "Start your exam",
-                              "Make Sure to Achieve More Than 60% ",
-                              "Start",
-                              true),
-                          buildPageViewItem(
-                              () => null,
-                              "assets/exam/illustration (2).png",
-                              "Start your exam",
-                              "Make Sure to Achieve More Than 60% ",
-                              "Start",
-                              false),
-                          buildPageViewItem(
-                              () => null,
-                              "assets/exam/illustration (3).png",
-                              "Start your exam",
-                              "Make Sure to Achieve More Than 60% ",
-                              "Start",
-                              false),
-                        ],
-                      ),
+                          "assets/exam/illustration (1).png",
+                          "Start your exam",
+                          "Make Sure to Achieve More Than 60% ",
+                          "Start",
+                          true),
                     ),
                   )
                 ]);

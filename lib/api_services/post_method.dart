@@ -51,12 +51,14 @@ class PostMethods {
 
   ///submit exam
 
-  Future submitExamMethod(
+  Future<ExamModel> submitExamMethod(
       List<String> answers, int examId, String accessToken) async {
     var response = await http.post(Uri.parse(baseUrl + 'exams/$examId/submit'),
         headers: {"Authorization": 'Bearer ' + accessToken},
         body: json.encode({"answers": answers}));
     var responseBody = jsonDecode(response.body);
-    return responseBody;
+    ExamModel examModel = ExamModel.fromJson(responseBody);
+
+    return examModel;
   }
 }

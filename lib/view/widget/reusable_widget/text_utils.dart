@@ -8,12 +8,14 @@ class KTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style: TextStyle(
-          fontSize: size,
-          color: color,
-          fontWeight:fontWeight ,
-         ),);
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        color: color,
+        fontWeight: fontWeight,
+      ),
+    );
   }
 
   KTextWidget({
@@ -21,5 +23,5 @@ class KTextWidget extends StatelessWidget {
     required this.size,
     required this.color,
     required this.fontWeight,
-   });
+  });
 }

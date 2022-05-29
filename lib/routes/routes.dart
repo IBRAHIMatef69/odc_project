@@ -7,14 +7,17 @@ import 'package:odc_project/view/screens/auth_screens/login_screen.dart';
 import 'package:odc_project/view/screens/auth_screens/sign_up_screen.dart';
 import 'package:odc_project/view/screens/categories_screen.dart';
 import 'package:odc_project/view/screens/course_details_screen.dart';
-import 'package:odc_project/view/screens/course_exam_screen.dart';
+import 'package:odc_project/view/screens/start_exam_screen.dart';
 import 'package:odc_project/view/screens/home_screen.dart';
 import 'package:odc_project/view/screens/main_screen.dart';
 import 'package:odc_project/view/screens/question_screen.dart';
 import 'package:odc_project/view/screens/splash_and_onBoarding/on_boarding_screen.dart';
 import 'package:odc_project/view/screens/splash_and_onBoarding/splash_screen.dart';
-
+import 'package:odc_project/view/screens/wait_hr_call_screen.dart';
 import '../view/screens/profile_screen.dart';
+
+
+/// clean hhh
 
 class Routes {
   static const splashScreen = "/splashScreen";
@@ -28,6 +31,7 @@ class Routes {
   static const courseDetailsScreen = "/courseDetailsScreen";
   static const courseExamScreen = "/courseExamScreen";
   static const questionScreen = "/questionScreen";
+  static const waitForHrScreen = "/waitForHrScreen";
   static final routes = [
     GetPage(
       name: splashScreen,
@@ -79,12 +83,17 @@ class Routes {
     GetPage(
         name: courseExamScreen,
         transition: Transition.fadeIn,
-        page: () => CourseExamScreen(),
+        page: () => StartExamScreen(),
         binding: MainBinding()),
     GetPage(
         name: questionScreen,
         transition: Transition.fadeIn,
         page: () => QuestionScreen(),
+        binding: QuestionBinding()),
+    GetPage(
+        name: questionScreen,
+        transition: Transition.fadeIn,
+        page: () => WaitForHrScreen(),
         binding: QuestionBinding()),
   ];
 }
