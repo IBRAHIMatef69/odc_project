@@ -28,8 +28,8 @@ class WaitForHrScreen extends StatelessWidget {
                   Row(
                     children: [
                       buildContainer(WHITE, MAINCOLOR, MAINCOLOR, "1", true),
-                      buildExpanded(DISABLED),
-                      buildContainer(DISABLED, DISABLED, DISABLED, "2", false),
+                      buildExpanded(MAINCOLOR),
+                      buildContainer(DISABLED, MAINCOLOR, MAINCOLOR, "2", false),
                       buildExpanded(DISABLED),
                       buildContainer(DISABLED, DISABLED, DISABLED, "3", false),
                     ],
@@ -68,7 +68,7 @@ class WaitForHrScreen extends StatelessWidget {
                         "assets/exam/illustration (2).png",
                         "Wait for the Call",
                         "     Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit, sed do ",
-                        "Start",
+
                       ),
                     ),
                   )
@@ -84,7 +84,7 @@ class WaitForHrScreen extends StatelessWidget {
     String imagePath,
     String caption,
     String desc,
-    String buttonText,
+
   ) {
     return Container(
       child: Column(
@@ -111,14 +111,14 @@ class WaitForHrScreen extends StatelessWidget {
           ),
           SizedBox(height: Get.height * .05),
           MainButton(
-              onPressed: () {},
+              onPressed: () {Get.offAllNamed(Routes.homeScreen);},
               text: KTextWidget(
-                  text: buttonText,
+                  text: "Back to Home",
                   size: 16,
-                  color: WHITE,
+                  color: MAINCOLOR,
                   fontWeight: FontWeight.w600),
               width: Get.width,
-              mainColor: MAINCOLOR,
+              mainColor: WHITE,
               borderColor: MAINCOLOR)
         ],
       ),

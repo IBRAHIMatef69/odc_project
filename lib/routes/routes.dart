@@ -91,8 +91,8 @@ class Routes {
         page: () => QuestionScreen(),
         binding: QuestionBinding()),
     GetPage(
-        name: questionScreen,
-        transition: Transition.fadeIn,
+        name: waitForHrScreen,
+        transition: Transition.rightToLeftWithFade,
         page: () => WaitForHrScreen(),
         binding: QuestionBinding()),
   ];
