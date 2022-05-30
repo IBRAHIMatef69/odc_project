@@ -57,7 +57,7 @@ class CourseController extends GetxController {
         isGettingExam = false;
         update();
 
-        Get.toNamed(Routes.courseExamScreen, arguments: [examQuestionList!]);
+        Get.toNamed(Routes.courseExamScreen, arguments: [examQuestionList!,examCode]);
       } else if (value.success == false) {
         isGettingExam = false;
         print(value.message!);
@@ -65,10 +65,11 @@ class CourseController extends GetxController {
             snackPosition: SnackPosition.TOP,
             backgroundColor: Colors.red.withOpacity(.5));
       }
-    }).catchError((onError) async {
+    }).catchError((onError) async { isGettingExam = false;
       String refreshToken = savedData.read(refreshTokenKEY);
       await PostMethods().getNewToken(refreshToken).then((value) {
         if (value.success == true) {
+
           print(refreshToken);
 
           savedData.write(accessTokenKEY, value.data!.accessToken);

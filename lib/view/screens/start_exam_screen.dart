@@ -14,6 +14,7 @@ class StartExamScreen extends StatelessWidget {
   final courseController = Get.find<CourseController>();
   PageController pageController = PageController();
   List<ExamDataModel> examQuestionList = Get.arguments[0];
+  int examCode = Get.arguments[1];
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +66,8 @@ class StartExamScreen extends StatelessWidget {
                   Expanded(
                     child: Container(
                       height: Get.height * 6,
-                      child:                           buildPageViewItem(
-                              () => null,
+                      child: buildPageViewItem(
+                          () => null,
                           "assets/exam/illustration (1).png",
                           "Start your exam",
                           "Make Sure to Achieve More Than 60% ",
@@ -128,7 +129,7 @@ class StartExamScreen extends StatelessWidget {
               onPressed: () {
                 if (examQuestionList.isNotEmpty) {
                   Get.offAllNamed(Routes.questionScreen,
-                      arguments: [examQuestionList]);
+                      arguments: [examQuestionList,examCode]);
                 }
               },
               text: KTextWidget(

@@ -42,6 +42,7 @@ dependencies:
   flutter_svg:
   timer_count_down:
   group_radio_button: ^1.2.0
+  lottie:
 
 dev_dependencies:
   flutter_test:

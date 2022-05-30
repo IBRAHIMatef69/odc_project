@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:odc_project/model/acces_token_model.dart';
-import 'package:odc_project/model/exam_model.dart';
+ import 'package:odc_project/model/exam_result_model.dart';
 import 'package:odc_project/model/login_respose_model.dart';
 import 'package:odc_project/model/register_response_model.dart';
 import 'package:odc_project/utilites/my_strings.dart';
@@ -51,13 +51,15 @@ class PostMethods {
 
   ///submit exam
 
-  Future<ExamModel> submitExamMethod(
+  Future<ExamResultModel> submitExamMethod(
       List<String> answers, int examId, String accessToken) async {
+    Map<String, dynamic> args = {"answers": answers};
+    var body = json.encode(args);
     var response = await http.post(Uri.parse(baseUrl + 'exams/$examId/submit'),
-        headers: {"Authorization": 'Bearer ' + accessToken},
-        body: json.encode({"answers": answers}));
+        body: body,   headers: {"Authorization": 'Bearer ' + accessToken},
+        );
     var responseBody = jsonDecode(response.body);
-    ExamModel examModel = ExamModel.fromJson(responseBody);
+    ExamResultModel examModel = ExamResultModel.fromJson(responseBody);
 
     return examModel;
   }

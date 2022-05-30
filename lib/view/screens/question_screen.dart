@@ -14,6 +14,7 @@ import 'package:timer_count_down/timer_count_down.dart';
 class QuestionScreen extends StatelessWidget {
   final questionController = Get.find<QuestionController>();
   List<ExamDataModel> examQuestionList = Get.arguments[0];
+  int examCode = Get.arguments[1];
   final PageController pageController = PageController();
 
   @override
@@ -90,7 +91,7 @@ class QuestionScreen extends StatelessWidget {
                       );
                     },
                     onFinished: () {
-                      Get.offNamed(Routes.courseExamScreen);
+                      questionController.submitExam(examCode);
                     },
                   )
                 ],
@@ -139,15 +140,20 @@ class QuestionScreen extends StatelessWidget {
                           borderColor: MAINCOLOR),
                   MainButton(
                       onPressed: () {
-                        if (questionController.currentIndex == 9) {
-                          Get.offNamed(Routes.waitForHrScreen);
+                        if (questionController.answersList[9] == "" &&
+                            questionController.currentIndex == 9) {
+                          Get.snackbar("choose answer", "Please choose answer",
+                              snackPosition: SnackPosition.TOP,
+                              backgroundColor: MAINCOLOR);
                         } else {
                           if (questionController.answersList
-                              .elementAt(questionController.currentIndex)
-                              .isNotEmpty) {
+                                  .elementAt(questionController.currentIndex) !=
+                              "") {
                             if (questionController.currentIndex != 9) {
                               pageController.jumpToPage(
                                   questionController.currentIndex + 1);
+                            } else if (questionController.currentIndex == 9) {
+                              questionController.submitExam(examCode);
                             }
                           } else {
                             Get.snackbar(
@@ -157,12 +163,16 @@ class QuestionScreen extends StatelessWidget {
                           }
                         }
                       },
-                      text: Text(
-                        questionController.currentIndex == 9
-                            ? "Finish"
-                            : "Next",
-                        style: TextStyle(color: WHITE),
-                      ),
+                      text: questionController.isLoading
+                          ? CircularProgressIndicator(
+                              color: WHITE,
+                            )
+                          : Text(
+                              questionController.currentIndex == 9
+                                  ? "Finish"
+                                  : "Next",
+                              style: TextStyle(color: WHITE),
+                            ),
                       width: Get.width * .415,
                       mainColor: MAINCOLOR,
                       borderColor: MAINCOLOR),
@@ -218,7 +228,7 @@ class QuestionScreen extends StatelessWidget {
                                   print(questionController.answersList.length);
                                   questionController.changeGroupValue(answer);
                                   questionController.updateAnswer(
-                                      index, answer.toString());
+                                      index, answer.toString(), "answer_1");
                                 })
                           ],
                         ),
@@ -251,7 +261,7 @@ class QuestionScreen extends StatelessWidget {
                                   print(questionController.answersList.length);
                                   questionController.changeGroupValue(answer);
                                   questionController.updateAnswer(
-                                      index, answer.toString());
+                                      index, answer.toString(), "answer_2");
                                 })
                           ],
                         ),
@@ -284,7 +294,7 @@ class QuestionScreen extends StatelessWidget {
                                   print(questionController.answersList.length);
                                   questionController.changeGroupValue(answer);
                                   questionController.updateAnswer(
-                                      index, answer.toString());
+                                      index, answer.toString(), "answer_3");
                                 })
                           ],
                         ),
@@ -314,10 +324,17 @@ class QuestionScreen extends StatelessWidget {
                                 groupValue:
                                     questionController.answersList[index],
                                 onChanged: (answer) {
+                                  for (int i = 0;
+                                      i < questionController.answersList.length;
+                                      i++) {
+                                    print(questionController.answersList[i]);
+                                    print(questionController.realAnswerList[i]);
+                                  }
+
                                   print(questionController.answersList.length);
                                   questionController.changeGroupValue(answer);
                                   questionController.updateAnswer(
-                                      index, answer.toString());
+                                      index, answer.toString(), "answer_4");
                                 })
                           ],
                         ),
