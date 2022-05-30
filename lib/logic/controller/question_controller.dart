@@ -16,8 +16,10 @@ class QuestionController extends GetxController {
   String groupValue = "";
   int currentIndex = 0;
   bool isLoading = false;
-  List<String> answersList = ["","","","","","","","","",""];
-  List<String> realAnswerList = ["","","","","","","","","",""];  ///hhhhhh
+  List<String> answersList = ["", "", "", "", "", "", "", "", "", ""];
+  List<String> realAnswerList = ["", "", "", "", "", "", "", "", "", ""];
+
+  ///hhhhhh
   GetStorage savedData = GetStorage();
 
   @override
@@ -26,11 +28,14 @@ class QuestionController extends GetxController {
     super.onInit();
   }
 
-
-  updateAnswer(int index, String answer,String realAnswer,) {
+  updateAnswer(
+    int index,
+    String answer,
+    String realAnswer,
+  ) {
     answersList.replaceRange(index, index + 1, [answer]);
-   realAnswerList[index]=realAnswer;
-   print(realAnswerList);
+    realAnswerList[index] = realAnswer;
+    print(realAnswerList);
     // realAnswerList.replaceRange(index, index + 1, [realAnswer]);
     update();
   }
@@ -83,7 +88,8 @@ class QuestionController extends GetxController {
               SizedBox(
                 height: Get.width * .3,
                 width: Get.width * .3,
-                child: Lottie.asset("assets/exam/congrate.json",fit: BoxFit.cover),
+                child: Lottie.asset("assets/exam/congrate.json",
+                    fit: BoxFit.cover),
               ),
               KTextWidget(
                 text: "Congratulations",
@@ -100,6 +106,31 @@ class QuestionController extends GetxController {
         Get.snackbar("something going wrong", "${value.message!}",
             snackPosition: SnackPosition.TOP,
             backgroundColor: Colors.red.withOpacity(.5));
+
+        ///error post method dont get the list skip it for now time
+        ///then remove the next two get functions
+        ///#1
+        Get.toNamed(Routes.waitForHrScreen);
+
+        ///#2
+        Get.defaultDialog(
+            title: "",
+            content: Column(
+              children: [
+                SizedBox(
+                  height: Get.width * .3,
+                  width: Get.width * .3,
+                  child: Lottie.asset("assets/exam/congrate.json",
+                      fit: BoxFit.cover),
+                ),
+                KTextWidget(
+                  text: "Congratulations",
+                  size: 20,
+                  color: MAINCOLOR,
+                  fontWeight: FontWeight.bold,
+                )
+              ],
+            ));
       }
     }).catchError((onError) async {
       String refreshToken = savedData.read(refreshTokenKEY);

@@ -63,7 +63,7 @@ class Routes {
     GetPage(
       name: homeScreen,
       page: () => HomeScreen(),
-      transition: Transition.rightToLeft,
+      transition: Transition.rightToLeft,binding: MainBinding()
     ),
     GetPage(
         name: profileScreen,
@@ -94,6 +94,6 @@ class Routes {
         name: waitForHrScreen,
         transition: Transition.rightToLeftWithFade,
         page: () => WaitForHrScreen(),
-        binding: QuestionBinding()),
+        bindings:[QuestionBinding(),MainBinding()] ),
   ];
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:odc_project/logic/controller/course_controller.dart';
-import 'package:odc_project/routes/routes.dart';
+ import 'package:odc_project/routes/routes.dart';
 import 'package:odc_project/utilites/themes.dart';
 
 import 'package:odc_project/view/widget/reusable_widget/costum_app_bar.dart';
@@ -11,7 +10,6 @@ import 'package:odc_project/view/widget/reusable_widget/text_utils.dart';
 import '../../model/exam_model.dart';
 
 class WaitForHrScreen extends StatelessWidget {
-  final courseController = Get.find<CourseController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,62 +17,58 @@ class WaitForHrScreen extends StatelessWidget {
       appBar: customAppBar("Course Exam", false),
       body: Padding(
         padding: EdgeInsets.all(Get.width * .08),
-        child: GetBuilder<CourseController>(
-          builder: (_) {
-            return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: Get.height * .05),
+              Row(
                 children: [
-                  SizedBox(height: Get.height * .05),
-                  Row(
-                    children: [
-                      buildContainer(WHITE, MAINCOLOR, MAINCOLOR, "1", true),
-                      buildExpanded(MAINCOLOR),
-                      buildContainer(DISABLED, MAINCOLOR, MAINCOLOR, "2", false),
-                      buildExpanded(DISABLED),
-                      buildContainer(DISABLED, DISABLED, DISABLED, "3", false),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      KTextWidget(
-                          text: "Exam",
-                          size: 13,
-                          color: BLACK,
-                          fontWeight: FontWeight.w500),
-                      KTextWidget(
-                          text: "HR interview",
-                          size: 13,
-                          color: BLACK,
-                          fontWeight: FontWeight.w500),
-                      KTextWidget(
-                          text: "Result",
-                          size: 13,
-                          color: BLACK,
-                          fontWeight: FontWeight.w500),
-                    ],
-                  ),
-                  SizedBox(
-                    height: Get.height * .05,
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: Get.height * 6,
-                      child: buildPageViewItem(
+                  buildContainer(WHITE, MAINCOLOR, MAINCOLOR, "1", true),
+                  buildExpanded(MAINCOLOR),
+                  buildContainer(DISABLED, MAINCOLOR, MAINCOLOR, "2", false),
+                  buildExpanded(DISABLED),
+                  buildContainer(DISABLED, DISABLED, DISABLED, "3", false),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  KTextWidget(
+                      text: "Exam",
+                      size: 13,
+                      color: BLACK,
+                      fontWeight: FontWeight.w500),
+                  KTextWidget(
+                      text: "HR interview",
+                      size: 13,
+                      color: BLACK,
+                      fontWeight: FontWeight.w500),
+                  KTextWidget(
+                      text: "Result",
+                      size: 13,
+                      color: BLACK,
+                      fontWeight: FontWeight.w500),
+                ],
+              ),
+              SizedBox(
+                height: Get.height * .05,
+              ),
+              Expanded(
+                child: Container(
+                  height: Get.height * 6,
+                  child: buildPageViewItem(
                         () => null,
-                        "assets/exam/illustration (2).png",
-                        "Wait for the Call",
-                        "     Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit, sed do ",
+                    "assets/exam/illustration (2).png",
+                    "Wait for the Call",
+                    "     Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit, sed do ",
 
-                      ),
-                    ),
-                  )
-                ]);
-          },
-        ),
+                  ),
+                ),
+              )
+            ]),
       ),
     );
   }
@@ -111,7 +105,7 @@ class WaitForHrScreen extends StatelessWidget {
           ),
           SizedBox(height: Get.height * .05),
           MainButton(
-              onPressed: () {Get.offAllNamed(Routes.homeScreen);},
+              onPressed: () {Get.toNamed(Routes.homeScreen);},
               text: KTextWidget(
                   text: "Back to Home",
                   size: 16,

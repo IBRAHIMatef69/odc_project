@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:odc_project/logic/controller/course_controller.dart';
 import 'package:odc_project/logic/controller/question_controller.dart';
 
 class QuestionBinding extends Bindings{
@@ -6,6 +7,6 @@ class QuestionBinding extends Bindings{
   void dependencies() {
     // TODO: implement dependencies
 
-  Get.put(QuestionController(),permanent: true);
+  Get.put(QuestionController(),permanent: true);  Get.put(CourseController());
   }
 }
