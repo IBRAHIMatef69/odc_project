@@ -29,7 +29,9 @@ class QuestionController extends GetxController {
 
   updateAnswer(int index, String answer,String realAnswer,) {
     answersList.replaceRange(index, index + 1, [answer]);
-    realAnswerList.replaceRange(index, index + 1, [realAnswer]);
+   realAnswerList[index]=realAnswer;
+   print(realAnswerList);
+    // realAnswerList.replaceRange(index, index + 1, [realAnswer]);
     update();
   }
 
