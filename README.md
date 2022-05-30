@@ -1,8 +1,8 @@
 # odc_project
 
-A new Flutter project.
+## A new flutter courses application with mvc design pattern MVC and GetX statemanegement and restfull Api
 
-## Getting Started
+ 
 
 This project is a starting point for a Flutter application.
 
