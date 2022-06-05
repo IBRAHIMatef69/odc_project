@@ -1,6 +1,6 @@
 # odc_project
 
-## A new flutter courses application with mvc design pattern MVC and GetX statemanegement and restfull Api
+## A new flutter courses application with MVC and GetX statemanegement and restfull Api
 
  
 
