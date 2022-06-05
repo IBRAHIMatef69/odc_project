@@ -3,8 +3,7 @@
 ## A new flutter courses application with MVC and GetX statemanegement and restfull Api
 
  
-
-This project is a starting point for a Flutter application.
+This project was completed within 4 days in orange digital center flutter hackathon .
 
 A few resources to get you started if this is your first Flutter project:
 
