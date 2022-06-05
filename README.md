@@ -1,6 +1,6 @@
 # odc_project
 
-## A new flutter courses application with MVC and GetX statemanegement and restfull Api
+##  courses application with MVC and GetX statemanegement and restfull Api
 
  
 This project was completed within 4 days in orange digital center flutter hackathon .
