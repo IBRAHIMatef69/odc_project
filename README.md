@@ -2,7 +2,7 @@
 
 ##  courses application with MVC and GetX statemanegement and restfull Api
 
-##  this is the design
+##  the design
 https://www.figma.com/file/pSkupMBZzy6q0hZkAOSF2M/ODC-Hackathon?node-id=201%3A1744
  
 This project was completed within 4 days in orange digital center flutter hackathon .
